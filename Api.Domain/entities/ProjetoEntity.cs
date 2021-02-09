@@ -3,6 +3,6 @@ namespace Api.Domain.entities
     public class ProjetoEntity : BaseEntity
     {
 
-        public string Name;
+        public string Name { get; set; }
     }
 }
