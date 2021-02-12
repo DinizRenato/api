@@ -6,6 +6,8 @@ namespace Api.Domain.entities
     {
         public Guid ProjetoId { get; set; }
 
+        public ProjetoEntity Projeto { get; set; }
+
         public int Order { get; set; }
 
         public string Name { get; set; }

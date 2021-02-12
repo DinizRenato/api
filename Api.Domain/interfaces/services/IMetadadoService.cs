@@ -10,7 +10,7 @@ namespace Api.Domain.interfaces.services
         Task<MetadadoDto> Get(Guid id);
         Task<IEnumerable<MetadadoDto>> GetAll();
         Task<MetadadoDto> Post(MetadadoDtoCreate metadado);
-        Task<MetadadoDto> Post(MetadadoDto metadado);
+        Task<MetadadoDto> Put(MetadadoDto metadado);
         Task<bool> Delete(Guid id);
     }
 }

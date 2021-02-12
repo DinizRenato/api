@@ -9,6 +9,7 @@ namespace Api.CrossCutting.mappings
         public ModelToEntityProfile()
         {
             CreateMap<ProjetoEntity, ProjetoModel>().ReverseMap();
+            CreateMap<MetadadoEntity, MetadadoModel>().ReverseMap();
         }
     }
 }

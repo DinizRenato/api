@@ -34,7 +34,7 @@ namespace Api.Domain.models
         }
 
         private string _options;
-        public string Option
+        public string Options
         {
             get { return _options; }
             set { _options = value; }

@@ -9,6 +9,7 @@ namespace Api.CrossCutting.dependecyinjection
         public static void ConfigureDependenciesService(IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<IProjetoService, ProjetoService>();
+            serviceCollection.AddTransient<IMetadadoService, MetadadoService>();
         }
     }
 }

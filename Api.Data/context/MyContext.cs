@@ -15,6 +15,8 @@ namespace Api.Data.context
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<ProjetoEntity>(new ProjetoMap().Configure);
+            modelBuilder.Entity<MetadadoEntity>(new MetadadoMap().Configure);
+
         }
     }
 }
