@@ -9,6 +9,7 @@ namespace Api.CrossCutting.mappings
         public DtoToModelProfile()
         {
             CreateMap<ProjetoModel, ProjetoDto>().ReverseMap();
+            CreateMap<ProjetoModel, ProjetoDtoCreate>().ReverseMap();
         }
     }
 }
