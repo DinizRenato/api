@@ -36,6 +36,13 @@ namespace application
         public void ConfigureServices(IServiceCollection services)
         {
 
+            if (_enviroment.IsEnvironment("Testing"))
+            {
+                Environment.SetEnvironmentVariable("DB_CONNECTION", "Server=.\\SQLEXPRESS2019;Initial Catalog=dbEbox_integration;MultipleActiveResultSets=true;User ID=sa;Password=pwd!0407@");
+                Environment.SetEnvironmentVariable("DATABASE", "SQLSERVER");
+                Environment.SetEnvironmentVariable("MIGRATION", "APLICAR");
+            }
+
             services.AddControllers();
             // services.AddControllers().AddNewtonsoftJson(options =>
             //     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
@@ -94,6 +101,17 @@ namespace application
             {
                 endpoints.MapControllers();
             });
+
+            if (Environment.GetEnvironmentVariable("MIGRATION").ToLower() == "APLICAR".ToLower())
+            {
+                using (var service = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+                {
+                    using (var context = service.ServiceProvider.GetService<MyContext>())
+                    {
+                        context.Database.Migrate();
+                    }
+                }
+            }
         }
     }
 }

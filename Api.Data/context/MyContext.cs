@@ -1,3 +1,4 @@
+using System;
 using Api.Data.mapping;
 using Api.Domain.entities;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,14 @@ namespace Api.Data.context
 
             modelBuilder.Entity<ProjetoEntity>(new ProjetoMap().Configure);
             modelBuilder.Entity<MetadadoEntity>(new MetadadoMap().Configure);
+
+            modelBuilder.Entity<ProjetoEntity>().HasData(
+              new ProjetoEntity
+              {
+                  Id = Guid.NewGuid(),
+                  Name = "Contrato de Clientes"
+              }
+            );
 
         }
     }
