@@ -14,6 +14,5 @@ namespace Api.Domain.interfaces
         Task<IEnumerable<T>> SelectAsync();
         Task<bool> ExistAsync(Guid id);
 
-
     }
 }

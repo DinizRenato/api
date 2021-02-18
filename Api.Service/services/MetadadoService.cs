@@ -6,6 +6,7 @@ using Api.Domain.entities;
 using Api.Domain.interfaces;
 using Api.Domain.interfaces.services;
 using Api.Domain.models;
+using Api.Domain.repository;
 using AutoMapper;
 
 namespace Api.Service.services
@@ -13,11 +14,11 @@ namespace Api.Service.services
     public class MetadadoService : IMetadadoService
     {
 
-        private IRepository<MetadadoEntity> _repository;
+        private IMetadadoRepository _repository;
 
         private readonly IMapper _mapper;
 
-        public MetadadoService(IRepository<MetadadoEntity> repository, IMapper mapper)
+        public MetadadoService(IMetadadoRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -55,6 +56,5 @@ namespace Api.Service.services
             var result = await _repository.UpdateAsync(entity);
             return _mapper.Map<MetadadoDto>(result);
         }
-
     }
 }

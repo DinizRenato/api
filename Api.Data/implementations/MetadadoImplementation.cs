@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Api.Data.context;
 using Api.Data.repository;
 using Api.Domain.entities;
@@ -8,10 +11,10 @@ namespace Api.Data.implementations
 {
     public class MetadadoImplementation : BaseRepository<MetadadoEntity>, IMetadadoRepository
     {
-        private DbSet<ProjetoEntity> _dataset;
+        private DbSet<MetadadoEntity> _dataset;
         public MetadadoImplementation(MyContext context) : base(context)
         {
-            _dataset = context.Set<ProjetoEntity>();
+            _dataset = context.Set<MetadadoEntity>();
         }
     }
 }

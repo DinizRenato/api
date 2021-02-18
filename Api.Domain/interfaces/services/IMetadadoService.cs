@@ -12,5 +12,6 @@ namespace Api.Domain.interfaces.services
         Task<MetadadoDto> Post(MetadadoDtoCreate metadado);
         Task<MetadadoDto> Put(MetadadoDto metadado);
         Task<bool> Delete(Guid id);
+
     }
 }

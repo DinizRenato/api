@@ -1,11 +1,12 @@
 using System;
+using System.Text.Json.Serialization;
 
 namespace Api.Domain.entities
 {
     public class MetadadoEntity : BaseEntity
     {
         public Guid ProjetoId { get; set; }
-
+        [JsonIgnore]
         public ProjetoEntity Projeto { get; set; }
 
         public int Order { get; set; }

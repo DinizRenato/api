@@ -6,16 +6,17 @@ using Api.Domain.entities;
 using Api.Domain.interfaces;
 using Api.Domain.interfaces.services;
 using Api.Domain.models;
+using Api.Domain.repository;
 using AutoMapper;
 
 namespace Api.Service.services
 {
     public class ProjetoService : IProjetoService
     {
-        private IRepository<ProjetoEntity> _repository;
+        private IProjetoRepository _repository;
         private readonly IMapper _mapper;
 
-        public ProjetoService(IRepository<ProjetoEntity> repository, IMapper mapper)
+        public ProjetoService(IProjetoRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -52,6 +53,11 @@ namespace Api.Service.services
             var entity = _mapper.Map<ProjetoEntity>(model);
             var result = await _repository.UpdateAsync(entity);
             return _mapper.Map<ProjetoDto>(result);
+        }
+
+        public async Task<ProjetoEntity> GetByIdWithMetadados(Guid id)
+        {
+            return await _repository.GetByIdWithMetadados(id);
         }
     }
 }

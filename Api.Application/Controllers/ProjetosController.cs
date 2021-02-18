@@ -61,6 +61,31 @@ namespace Api.Application.Controllers
                 return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
             }
         }
+        [HttpGet]
+        [Route("metadados/{id}")]
+        public async Task<ActionResult> GetByIdWithMetadados(Guid id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            try
+            {
+                var result = await _service.GetByIdWithMetadados(id);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(result);
+            }
+            catch (ArgumentException e)
+            {
+
+                return StatusCode((int)HttpStatusCode.InternalServerError, e.Message);
+            }
+        }
 
         [HttpPost]
         public async Task<ActionResult> Post([FromBody] ProjetoDtoCreate projeto)
