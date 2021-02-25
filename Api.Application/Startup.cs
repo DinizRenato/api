@@ -44,9 +44,10 @@ namespace application
             }
 
             services.AddControllers();
-            // services.AddControllers().AddNewtonsoftJson(options =>
-            //     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-            // );
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
 
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureRepository.ConfigureDependenciesRepository(services);
@@ -96,6 +97,14 @@ namespace application
             app.UseRouting();
 
             app.UseAuthorization();
+
+
+            app.UseCors(builder =>
+       builder.WithOrigins("http://localhost:4200")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials());
+
 
             app.UseEndpoints(endpoints =>
             {

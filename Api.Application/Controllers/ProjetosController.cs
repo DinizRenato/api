@@ -3,10 +3,12 @@ using System.Net;
 using System.Threading.Tasks;
 using Api.Domain.dtos.projeto;
 using Api.Domain.interfaces.services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Application.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProjetosController : ControllerBase
